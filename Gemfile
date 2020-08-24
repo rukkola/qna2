@@ -27,16 +27,24 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'slim-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+=begin
   gem "rspec-core", :github => "rspec/rspec-core"
   gem "rspec-expectations", :github => "rspec/rspec-expectations"
   gem "rspec-mocks", :github => "rspec/rspec-mocks"
   gem "rspec-support", :github => "rspec/rspec-support"
   gem "rspec-rails", :github => "rspec/rspec-rails"
-  gem 'factory_girl_rails'
+=end
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
+  end
+  gem 'rails-controller-testing'
+  #gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -54,6 +62,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
