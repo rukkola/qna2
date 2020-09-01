@@ -1,6 +1,15 @@
 GIT
+  remote: https://github.com/rails/sprockets-rails.git
+  revision: c269f5e01fdffa5c41350e855183d94ff33d318a
+  specs:
+    sprockets-rails (3.2.1)
+      actionpack (>= 4.0)
+      activesupport (>= 4.0)
+      sprockets (>= 3.0.0)
+
+GIT
   remote: https://github.com/rspec/rspec-core.git
-  revision: 1dbf4a419ac7aa019d4dc1b0798c4b76880ca7ba
+  revision: d9e7d3ddaea72a8e54961a5304607790ddb26ec7
   branch: main
   specs:
     rspec-core (3.10.0.pre)
@@ -8,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-expectations.git
-  revision: e91c65babdfce12a5565949f5d180f90f3d928ab
+  revision: 64e69b6ee48d82269fb6d2f2ad97047131be79e1
   branch: main
   specs:
     rspec-expectations (3.10.0.pre)
@@ -17,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-mocks.git
-  revision: 018d0d54a0ecaed259fd4eac5f151c51abb57b1d
+  revision: 61f42f9e2aa5768f9351984b6ed40666eb7ebda2
   branch: main
   specs:
     rspec-mocks (3.10.0.pre)
@@ -26,7 +35,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-rails.git
-  revision: 067b5711ed4ac56f01b904ae71176d6f1edda35e
+  revision: cbf42389776af6500d41780c21502fc2adba4328
   branch: main
   specs:
     rspec-rails (4.1.0.pre)
@@ -105,6 +114,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    bcrypt (3.1.15)
     bindex (0.8.1)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
@@ -121,6 +131,12 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
+    devise (4.7.2)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.4.4)
     erubi (1.9.0)
     factory_bot (6.1.0)
@@ -135,10 +151,12 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
+    launchy (2.5.0)
+      addressable (~> 2.7)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.6.0)
+    loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -149,11 +167,12 @@ GEM
     mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.14.1)
+    minitest (5.14.2)
     msgpack (1.3.3)
     nio4r (2.5.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    orm_adapter (0.5.0)
     pg (1.2.3)
     public_suffix (4.0.5)
     puma (4.3.5)
@@ -198,6 +217,9 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.7.1)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -212,7 +234,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    shoulda-matchers (4.3.0)
+    shoulda-matchers (4.4.1)
       activesupport (>= 4.2.0)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
@@ -221,17 +243,13 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (>= 3.0, < 5.0)
-    spring (2.1.0)
+    spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.2.1)
-      actionpack (>= 4.0)
-      activesupport (>= 4.0)
-      sprockets (>= 3.0.0)
     temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
@@ -241,6 +259,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (4.0.4)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -268,8 +288,10 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  devise
   factory_bot_rails
   jbuilder (~> 2.7)
+  launchy
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
@@ -286,6 +308,7 @@ DEPENDENCIES
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
+  sprockets-rails!
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
