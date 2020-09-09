@@ -60,12 +60,14 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  #gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'shoulda-matchers'
   gem 'launchy'
   gem "sprockets-rails", github: "rails/sprockets-rails"
+  gem 'database_cleaner' # позволяет отчищать базу
+  gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

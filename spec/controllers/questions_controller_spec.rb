@@ -32,7 +32,11 @@ describe QuestionsController do
 			get :show, params: { id: question } #рельсы автоматически подставят id из объекта
 			expect(assigns(:question)).to eq(question)
 		end
-=end
+=end	
+		it 'assigns new answer for question' do
+			expect(assigns(:answer)).to be_a_new(Answer)
+		end
+
 		it 'render show viev' do
 			expect(response).to render_template :show
 		end
