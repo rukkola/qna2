@@ -5,7 +5,7 @@ feature 'Create question', %q{
 } do
 	
 	given(:user) { create(:user) } 
-=begin #Сломался тест/ожидание. Раньше работал до рефакторинга. Откатил назад, все равно не работает.
+#begin #Сломался тест/ожидание. Раньше работал до рефакторинга. Откатил назад, все равно не работает.
 	scenario 'Authenticated user creates question' do
 		sign_in(user)
 	
@@ -19,12 +19,13 @@ feature 'Create question', %q{
 		click_on 'Ask question'
 		fill_in 'Title', with: 'Test question'
 		fill_in 'Body', with: 'text text'
+		
 		click_on 'Create'
 
 		#Сломался тест/ожидание. Раньше работал до рефакторинга. Откатил назад, все равно не работает.
-		#expect(page).to have_content 'Your question successfully created.'
+		expect(page).to have_content 'Your question successfully created.'
 	end
-=end
+#end
 
 	scenario 'Non-authenticated user ties to create question' do
 		visit questions_path

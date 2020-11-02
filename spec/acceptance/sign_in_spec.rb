@@ -18,7 +18,7 @@ feature 'User sing in', %q{
 	end
 
 	scenario 'Non-registered user try to sign in' do
-		visit new_user_session_path
+		visit new_user_session_path		# DSL capybara
 		fill_in 'Email', with: 'wrong@test.com'
 		fill_in 'password', with: '123456'
 		click_on 'Log in'
