@@ -2,7 +2,7 @@ class CreateAnswers < ActiveRecord::Migration[6.0]
   def change
     create_table :answers do |t|
       t.text :body
-      t.references :question, null: false, foreign_key: true, index: true
+      t.references :question, null: false, foreign_key: true, index: true #привязка к вопросу
 
       t.timestamps
     end

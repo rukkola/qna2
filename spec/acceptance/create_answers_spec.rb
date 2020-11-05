@@ -5,7 +5,7 @@ feature 'User answer', %q{
 } do 
 
   given(:user) { create(:user) }
-  given(:question) { create(:question) }
+  given!(:question) { create(:question) }
 #=begin	
   scenario 'Autenticated user create', js: true do
     sign_in(user)
@@ -16,13 +16,14 @@ feature 'User answer', %q{
 
     expect(current_path).to eq question_path(question)
     within '.answers' do
-    	expect(page).to have_content 'My answer'
+      #binding.pry
+      expect(page).to have_content 'My answer'
     end
   end
 #=end	
 
   scenario 'User try create invalidate', js: true do
-  	sign_in user
+  	sign_in(user)
   	visit question_path(question)
 
   	click_on 'Create'

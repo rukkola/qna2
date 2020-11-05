@@ -27,12 +27,12 @@ describe QuestionsController do
 
 	describe 'GET #show' do
 		before { get :show, params: { id: question } }
-=begin Не проходит тест где-то ошибка
+    #=begin Не проходит тест где-то ошибка
 		it 'assigns the requested question to @question' do
-			get :show, params: { id: question } #рельсы автоматически подставят id из объекта
+      #get :show, params: { id: question } #рельсы автоматически подставят id из объекта
 			expect(assigns(:question)).to eq(question)
 		end
-=end	
+    #=end
 		it 'assigns new answer for question' do
 			expect(assigns(:answer)).to be_a_new(Answer)
 		end
@@ -61,12 +61,12 @@ describe QuestionsController do
 		sign_in_user
 
 		before { get :edit, params: { id: question } }
-=begin
+    #=begin
 		it 'assigns the requested question to @question' do
-			get :edit, params: { id: question } #рельсы автоматически подставят id из объекта
+      #get :edit, params: { id: question } #рельсы автоматически подставят id из объекта
 			expect(assigns(:question)).to eq(question)
 		end
-=end
+    #=end
 		it 'render show edit' do
 			expect(response).to render_template :edit
 		end
