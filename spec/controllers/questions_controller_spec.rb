@@ -43,14 +43,17 @@ describe QuestionsController do
 	end	
 
 	describe 'GET #new' do
-
 		sign_in_user
 
 		before { get :new }
 
 		it 'assigns a new Question to @question' do
 			expect(assigns(:question)).to be_a_new(Question)
-		end
+    end
+
+    it 'builds new attachment for question' do
+      expect(assigns(:question).attachments.first).to be_a_new(Attachment) #новый не сохраненный экземпляр
+    end
 
 		it 'render new view' do
 			expect(response).to render_template :new

@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
 
 	 def new
  		 @question = Question.new
+		 @question.attachments.build # создаем новый объект в массиве Attachment
  	 end
 
 	 def edit
@@ -49,6 +50,6 @@ class QuestionsController < ApplicationController
 	 end
 
 	 def question_params
- 		 params.require(:question).permit(:title, :body)
+ 		 params.require(:question).permit(:title, :body, attachments_attributes: [:file]) # attachments_attributes: [:file]) - заголовок для файла
  	 end
 end
