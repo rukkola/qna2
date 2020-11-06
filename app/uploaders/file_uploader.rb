@@ -1,4 +1,5 @@
 class FileUploader < CarrierWave::Uploader::Base
+  delegate :identifire, to: :file # Чтобы не писать a.file.file.filename(во вьюхе)
 
   storage :file # означает что афйлы будут храниться локально
 

@@ -1,0 +1,15 @@
+<%= form_with(model: railway_station, local: true) do |form| %>
+<%= link_to 'Добавить поезд', new_train_path %>
+
+<td><%= train.number %></td>
+        <td><%= link_to 'Показать', train %></td>
+        <td><%= link_to 'Редактировать', edit_train_path(train) %></td>
+        <td><%= link_to 'Удалить', train, method: :delete, data: { confirm: 'Удалить?' } %></td>
+
+ <div class="field">
+    <%= form.label :current_station, "Список станций" %>
+    <%= form.collection_select :current_station_id, RailwayStation.all, :id, :title %>
+  </div>
+
+<%= form_with(model: railway_station, local: true) do |form| %>
+ru.activerecord.errors.models.railway_station.attributes.title.blank
