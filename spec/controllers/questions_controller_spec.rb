@@ -35,9 +35,13 @@ describe QuestionsController do
     #=end
 		it 'assigns new answer for question' do
 			expect(assigns(:answer)).to be_a_new(Answer)
+    end
+
+		it 'builds new attachment for answer' do
+			expect(assigns(:answer).attachments.first).to be_a_new(Attachment) #новый не сохраненный экземпляр
 		end
 
-		it 'render show viev' do
+		it 'render show view' do
 			expect(response).to render_template :show
 		end
 	end	
