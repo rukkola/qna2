@@ -10,9 +10,11 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
+
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
-gem 'slim-rails'
+gem 'carrierwave'
+gem "remotipart"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -28,7 +30,6 @@ group :development, :test do
     gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
   end
   gem 'rails-controller-testing'
-  #gem 'factory_girl_rails'
   gem 'factory_bot_rails'
 end
 
@@ -42,11 +43,13 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  gem 'webdrivers'
+  gem 'shoulda-matchers'
   gem 'launchy'
   gem 'shoulda-matchers'
   gem "sprockets-rails", github: "rails/sprockets-rails"
-  gem 'webdrivers'
+  gem 'database_cleaner' # позволяет отчищать базу
+  gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
   gem 'pry'
 end
 

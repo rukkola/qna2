@@ -45,7 +45,7 @@ RSpec.configure do |config|
   ##Добавляем модуль TestHelpers
   config.include Devise::TestHelpers, type: :controller #Устанавливаем тесты только для контроллеров
   config.extend ControllerMacros, type: :controller
-  config.include AcceptanceHelper, type: :feature
+  #config.include AcceptanceHelper, type: :feature
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -77,4 +77,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
 end

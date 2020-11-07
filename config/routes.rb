@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :questions
+  resources :questions do
+    resources :answers		#Сделали вложенный ресурс чтобы у answer был доступен question
+  end
 
   root to: "questions#index"
 

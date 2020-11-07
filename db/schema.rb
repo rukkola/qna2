@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_132039) do
+ActiveRecord::Schema.define(version: 2020_11_06_170600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.text "body"
+    t.bigint "question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.string "file"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "attachmentable_id"
+    t.string "attachmentable_type"
+    t.index ["attachmentable_id"], name: "index_attachments_on_attachmentable_id"
+    t.index ["attachmentable_type"], name: "index_attachments_on_attachmentable_type"
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string "title"
@@ -34,4 +52,5 @@ ActiveRecord::Schema.define(version: 2020_08_31_132039) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "questions"
 end

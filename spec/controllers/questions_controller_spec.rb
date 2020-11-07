@@ -27,6 +27,7 @@ describe QuestionsController do
 
 	describe 'GET #show' do
 		before { get :show, params: { id: question } }
+<<<<<<< HEAD
 
 		it 'assigns the requested question to @question' do
 			#get :show, params: { id: question } #рельсы автоматически подставят id из объекта
@@ -34,19 +35,39 @@ describe QuestionsController do
 		end
 
 		it 'render show viev' do
+=======
+    #=begin Не проходит тест где-то ошибка
+		it 'assigns the requested question to @question' do
+      #get :show, params: { id: question } #рельсы автоматически подставят id из объекта
+			expect(assigns(:question)).to eq(question)
+		end
+    #=end
+		it 'assigns new answer for question' do
+			expect(assigns(:answer)).to be_a_new(Answer)
+    end
+
+		it 'builds new attachment for answer' do
+			expect(assigns(:answer).attachments.first).to be_a_new(Attachment) #новый не сохраненный экземпляр
+		end
+
+		it 'render show view' do
+>>>>>>> answers
 			expect(response).to render_template :show
 		end
 	end	
 
 	describe 'GET #new' do
-
 		sign_in_user
 
 		before { get :new }
 
 		it 'assigns a new Question to @question' do
 			expect(assigns(:question)).to be_a_new(Question)
-		end
+    end
+
+    it 'builds new attachment for question' do
+      expect(assigns(:question).attachments.first).to be_a_new(Attachment) #новый не сохраненный экземпляр
+    end
 
 		it 'render new view' do
 			expect(response).to render_template :new
@@ -57,11 +78,20 @@ describe QuestionsController do
 		sign_in_user
 
 		before { get :edit, params: { id: question } }
+<<<<<<< HEAD
 
 		it 'assigns the requested question to @question' do
 			expect(assigns(:question)).to eq(question)
 		end
 
+=======
+    #=begin
+		it 'assigns the requested question to @question' do
+      #get :edit, params: { id: question } #рельсы автоматически подставят id из объекта
+			expect(assigns(:question)).to eq(question)
+		end
+    #=end
+>>>>>>> answers
 		it 'render show edit' do
 			expect(response).to render_template :edit
 		end

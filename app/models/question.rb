@@ -1,3 +1,8 @@
 class Question < ApplicationRecord
-	validates :title, :body, presence: true
+	 has_many :answers
+	 has_many :attachments, as: :attachmentable
+
+	 validates :title, :body, presence: true
+
+	 accepts_nested_attributes_for :attachments # Модель qwest.. может принимтаь аттрибуты attach..
 end
