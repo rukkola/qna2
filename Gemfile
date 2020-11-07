@@ -46,7 +46,6 @@ group :test do
   gem 'webdrivers'
   gem 'shoulda-matchers'
   gem 'launchy'
-  gem 'shoulda-matchers'
   gem "sprockets-rails", github: "rails/sprockets-rails"
   gem 'database_cleaner' # позволяет отчищать базу
   gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
